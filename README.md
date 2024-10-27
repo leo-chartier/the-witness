@@ -32,3 +32,7 @@ The goal would be to have a GitHub Page where you would be able to solve a rando
 ## Contributing
 
 Contributions are welcome! To get started, either fill an issue or open a pull request.
+
+## License
+
+This project is under the [GNU AGPLv3 license](LICENSE).
