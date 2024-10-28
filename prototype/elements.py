@@ -65,13 +65,27 @@ class Center:
 class CenterColor(Center):
     color: Color
 
+    def __init__(self, color: Color) -> None:
+        super().__init__()
+        self.color = color
+
 class CenterTetris(Center):
-    shape: str # TODO
-    negative: bool
+    shape: list[Position]
     rotatable: bool
+    negative: bool
+
+    def __init__(self, shape: list[Position], rotatable: bool = False, negative: bool = False) -> None:
+        super().__init__()
+        self.shape = shape
+        self.rotatable = rotatable
+        self.negative = negative
 
 class CenterSun(Center):
     color: Color
+
+    def __init__(self, color: Color) -> None:
+        super().__init__()
+        self.color = color
 
 class CenterElimination(Center):
     pass
@@ -79,10 +93,12 @@ class CenterElimination(Center):
 class CenterTriangle(Center):
     number: int
 
+    def __init__(self, number: int) -> None:
+        if number < 1 or number > 3:
+            raise ValueError("A cell can only have between 1 and 3 triangles")
 
-
-class Puzzle:
-    pass # TODO
+        super().__init__()
+        self.number = number
 
 
 
@@ -91,8 +107,3 @@ class Move(Enum):
     DOWN = Position(0, 1)
     LEFT = Position(-1, 0)
     RIGHT = Position(1, 0)
-
-class Solution:
-    puzzle: Puzzle
-    start: Position
-    moves: list[Move]
