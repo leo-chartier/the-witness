@@ -18,6 +18,11 @@ class Position:
     def y(self) -> int:
         return self.__y
     
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Position):
+            return self.__x == other.__x and self.__y == other.__y
+        return NotImplemented
+    
     def __add__(self, other):
         if isinstance(other, Position):
             return Position(self.__x + other.__x, self.__y + other.__y)
