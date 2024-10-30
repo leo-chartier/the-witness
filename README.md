@@ -20,7 +20,7 @@ The goal would be to have a GitHub Page where you would be able to solve a rando
 - [ ] Solver prototype
   - [x] Data types
   - [x] Unit tests
-  - [ ] Maze solver
+  - [x] Maze solver
   - [ ] Implement dots solving
   - [ ] Implement colors solving
   - [ ] Basic generator (maze, dots, colors)
