@@ -1,4 +1,5 @@
 from elements import Center, EdgeType, IntersectionType
+from solution import Solution
 
 
 class Puzzle:
@@ -22,3 +23,8 @@ class Puzzle:
         self.vertical_edges = vertical_edges
         self.centers = centers
         self.symmetry = symmetry
+
+        # TODO: Check for invalid puzzles
+    
+    def find_solution(self) -> Solution:
+        raise NotImplementedError()
