@@ -1,7 +1,7 @@
 from elements import Move, Position
 
 
-class Solution:
+class Path:
     start: Position
     moves: list[Move]
 

@@ -2,7 +2,7 @@ import unittest
 
 from elements import *
 from puzzle import Puzzle
-from solution import Solution
+from path import Path
 
 
 
@@ -21,7 +21,7 @@ class TestSolver(unittest.TestCase):
             vertical_edges=[],
             centers=[]
         )
-        expected = Solution(Position(0, 0), [Move.RIGHT])
+        expected = Path(Position(0, 0), [Move.RIGHT])
         result = puzzle.find_solution()
         self.assertEqual(expected.start, result.start)
         self.assertListEqual(expected.moves, result.moves)
@@ -47,7 +47,7 @@ class TestSolver(unittest.TestCase):
                 [Center(), Center()],
             ]
         )
-        expected = Solution(Position(0, 0), [Move.RIGHT, Move.RIGHT, Move.DOWN, Move.DOWN])
+        expected = Path(Position(0, 0), [Move.RIGHT, Move.RIGHT, Move.DOWN, Move.DOWN])
         result = puzzle.find_solution()
         self.assertEqual(expected.start, result.start)
         self.assertCountEqual(expected.moves, result.moves)
@@ -73,7 +73,7 @@ class TestSolver(unittest.TestCase):
                 [Center(), Center()],
             ]
         )
-        expected = Solution(Position(0, 0), [Move.DOWN, Move.DOWN, Move.RIGHT, Move.UP, Move.UP, Move.RIGHT, Move.DOWN, Move.DOWN])
+        expected = Path(Position(0, 0), [Move.DOWN, Move.DOWN, Move.RIGHT, Move.UP, Move.UP, Move.RIGHT, Move.DOWN, Move.DOWN])
         result = puzzle.find_solution()
         self.assertEqual(expected.start, result.start)
         self.assertListEqual(expected.moves, result.moves)
@@ -99,7 +99,7 @@ class TestSolver(unittest.TestCase):
                 [Center()],
             ]
         )
-        expected = Solution(Position(0, 0), [Move.RIGHT, Move.DOWN, Move.LEFT, Move.DOWN, Move.RIGHT])
+        expected = Path(Position(0, 0), [Move.RIGHT, Move.DOWN, Move.LEFT, Move.DOWN, Move.RIGHT])
         result = puzzle.find_solution()
         self.assertEqual(expected.start, result.start)
         self.assertListEqual(expected.moves, result.moves)
@@ -125,7 +125,7 @@ class TestSolver(unittest.TestCase):
                 [CenterColor(Color.BLACK), CenterColor(Color.WHITE)],
             ]
         )
-        expected = Solution(Position(0, 2), [Move.RIGHT, Move.UP, Move.RIGHT, Move.UP])
+        expected = Path(Position(0, 2), [Move.RIGHT, Move.UP, Move.RIGHT, Move.UP])
         result = puzzle.find_solution()
         self.assertEqual(expected.start, result.start)
         self.assertListEqual(expected.moves, result.moves)

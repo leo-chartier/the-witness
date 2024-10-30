@@ -1,5 +1,5 @@
 from elements import Center, EdgeType, IntersectionType, Move, Position
-from solution import Solution
+from path import Path
 
 
 class Puzzle:
@@ -26,21 +26,21 @@ class Puzzle:
 
         # TODO: Check for invalid puzzles
     
-    def find_solution(self) -> Solution:
+    def find_solution(self) -> Path:
         starts = [
             Position(x, y)
             for y, row in enumerate(self.intersections)
             for x, intersection in enumerate(row)
             if intersection == IntersectionType.START
         ]
-        candidates = [Solution(start, []) for start in starts]
+        candidates = [Path(start, []) for start in starts]
 
         # TODO: Do better than bruteforce
         while candidates:
             candidate = candidates.pop(0)
 
             for move in Move:
-                new_candidate = Solution(candidate.start, candidate.moves + [move])
+                new_candidate = Path(candidate.start, candidate.moves + [move])
 
                 if not self.is_path_valid(new_candidate):
                     continue
@@ -52,8 +52,8 @@ class Puzzle:
 
         raise RuntimeError("No solution found")
     
-    def is_path_valid(self, path: Solution) -> bool:
+    def is_path_valid(self, path: Path) -> bool:
         raise NotImplementedError()
     
-    def is_solution(self, path: Solution) -> bool:
+    def is_solution(self, path: Path) -> bool:
         raise NotImplementedError()
