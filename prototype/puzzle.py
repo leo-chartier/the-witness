@@ -61,6 +61,7 @@ class Puzzle:
     
     def is_path_valid(self, path: Path) -> bool:
         position = path.start
+        visited = [position]
 
         # Check if start is correct
         if not self.is_intersection_valid(position):
@@ -73,6 +74,11 @@ class Puzzle:
             new_position = position + move.value
             if not self.is_intersection_valid(new_position):
                 return False
+            
+            # Check for overlap
+            if new_position in visited:
+                return False
+            visited.append(position)
 
             # Check if edge is valid
             match move:
