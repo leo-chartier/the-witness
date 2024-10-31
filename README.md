@@ -21,7 +21,7 @@ The goal would be to have a GitHub Page where you would be able to solve a rando
   - [x] Data types
   - [x] Unit tests
   - [x] Maze solver
-  - [ ] Implement dots solving
+  - [x] Implement dots solving
   - [ ] Implement colors solving
   - [ ] Basic generator (maze, dots, colors)
 - [ ] Specifications

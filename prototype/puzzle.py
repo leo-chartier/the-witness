@@ -59,6 +59,18 @@ class Puzzle:
             return False
         return True
     
+    def get_edge(self, position: Position, direction: Move):
+        new_position = position + direction.value
+        match direction:
+            case Move.UP:
+                return self.vertical_edges[new_position.y][new_position.x]
+            case Move.DOWN:
+                return self.vertical_edges[position.y][position.x]
+            case Move.LEFT:
+                return self.horizontal_edges[new_position.y][new_position.x]
+            case Move.RIGHT:
+                return self.horizontal_edges[position.y][position.x]
+    
     def is_path_valid(self, path: Path) -> bool:
         position = path.start
         visited = [position]
@@ -81,15 +93,7 @@ class Puzzle:
             visited.append(position)
 
             # Check if edge is valid
-            match move:
-                case Move.UP:
-                    edge = self.vertical_edges[new_position.y][new_position.x]
-                case Move.DOWN:
-                    edge = self.vertical_edges[position.y][position.x]
-                case Move.LEFT:
-                    edge = self.horizontal_edges[new_position.y][new_position.x]
-                case Move.RIGHT:
-                    edge = self.horizontal_edges[position.y][position.x]
+            edge = self.get_edge(position, move)
             if edge in (EdgeType.MISSING, EdgeType.BROKEN):
                 return False
             
@@ -98,15 +102,39 @@ class Puzzle:
         return True
     
     def is_solution(self, path: Path) -> bool:
+        # Check path
         if not self.is_path_valid(path):
             return False
 
+        # Check end position
         position = path.start
         for move in path.moves:
             position += move.value
-        
         if self.intersections[position.y][position.x] != IntersectionType.END:
             return False
         
-        # TODO: Check for features
+        # Count total dots
+        count = 0
+        for row in self.intersections:
+            for intersection in row:
+                if intersection == IntersectionType.DOT:
+                    count += 1
+        for row in self.horizontal_edges + self.vertical_edges:
+            for edge in row:
+                if edge == EdgeType.DOT:
+                    count += 1
+
+        # Count "eaten" dots
+        position = path.start
+        for move in path.moves:
+            edge = self.get_edge(position, move)
+            if edge == EdgeType.DOT:
+                count -= 1
+            position += move.value
+            if self.intersections[position.y][position.x] == IntersectionType.DOT:
+                count -= 1
+        if count > 0:
+            return False
+
+        # TODO: Check for colors
         return True
