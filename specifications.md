@@ -10,6 +10,7 @@
 - [Functional Specifications](#functional-specifications)
   - [User Requirements](#user-requirements)
   - [System Behavior](#system-behavior)
+  - [Security considerations](#security-considerations)
 - [Technical Specifications](#technical-specifications)
   - [Hardware Requirements](#hardware-requirements)
   - [Software Requirements](#software-requirements)
@@ -62,6 +63,16 @@ Saving score, sharing results and playing previous puzzles will not be done.
 **Error Handling**: In case an error occurs during generation or gameplay, the puzzle should instead show a clear error message explaining what went wrong. A link to a GitHub issue should also be provided for easy reporting.
 
 ### System Behavior
+**Web Page**: The interface will take the form of a web page. This web page should be a standalone for easy embedding.
+
+**GitHub Pages**: The page should be hosted on GithHub Pages. This removes the need for an external host server.
+
+**Updates**: The puzzle should change daily at a fixed time without external intervention. This time is set to be at midnight UTC.
+
+### Security considerations
+**Sign-Off**: As the build and deployment is done automatically, the release branch should be protected and require review and approval from the repository's owner, [Léo Chartier](https://github.com/leo-chartier).
+
+**User Privacy**: The user's data will not be stored in any way. If the user is to reload the page, their progress will be lost. There is as such no way to keep track of scores such as solve time or days streak.
 
 ## Technical Specifications
 ### Hardware Requirements
