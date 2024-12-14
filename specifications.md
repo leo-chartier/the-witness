@@ -49,8 +49,18 @@ The optimized solver is currently out of scope and may be created and worked on 
 
 A puzzle editor is out of scope. Some already exists such as [The Windmill](https://windmill.thefifthmatt.com/build). Being able to share puzzle from and to those engines is out of scope.
 
+Saving score, sharing results and playing previous puzzles will not be done.
+
 ## Functional Specifications
 ### User Requirements
+**Interactivity**: The user should be able to interact by clicking/tapping and holding from the start to the end, tracing the path with their cursor/finger. The system should force the path to start and end on the designated areas as well as follow the walls.
+
+**Responsiveness**: The page, when loaded as a standalone, should be responsive and fit the puzzle (a square) to the smallest size of the screen. This ensures the user can fully see the puzzle without scrolling. See [User Interface Design](#user-interface-design) for the different sizes.
+
+**User Manual**: Unlike the real game, the page should contain a button that shows instructions. These will explain how to play and what are the different mechanics. To have the user think by themself, the button will be disabled for the first two minutes. To prevent cheating and unecessary requests, the instructions should be loaded lazily.
+
+**Error Handling**: In case an error occurs during generation or gameplay, the puzzle should instead show a clear error message explaining what went wrong. A link to a GitHub issue should also be provided for easy reporting.
+
 ### System Behavior
 
 ## Technical Specifications
