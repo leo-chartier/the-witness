@@ -65,7 +65,7 @@ Saving score, sharing results and playing previous puzzles will not be done.
 ### System Behavior
 **Web Page**: The interface will take the form of a web page. This web page should be a standalone for easy embedding.
 
-**GitHub Pages**: The page should be hosted on GithHub Pages. This removes the need for an external host server.
+**GitHub Pages**: The page should be hosted on GithHub Pages. This removes the need for an external host server. The page will be built as an artifact to be uploaded.
 
 **Updates**: The puzzle should change daily at a fixed time without external intervention. This time is set to be at midnight UTC.
 
@@ -76,8 +76,17 @@ Saving score, sharing results and playing previous puzzles will not be done.
 
 ## Technical Specifications
 ### Hardware Requirements
+As the website will be hosted on GitHub Pages and deployed by a GitHub Action, there is no specific requirement on our part. All required maintenance and hardware updates is handled directly by GitHub.
+
 ### Software Requirements
+The front-end will be written in Vue.js. This will make working with elements much easier. The application will be driven fully locally in JavaScript.
+
+No database is required.
+
 ### Integration and Dependencies
+The website will rely on GithHub Pages and its [deployment Action](https://github.com/actions/deploy-pages).
+
+The other dependency is [Vue.js](https://vuejs.org/). It will be accessed locally by the client by using it [from a CDN](https://vuejs.org/guide/quick-start.html#using-vue-from-cdn).
 
 ## Design Specifications
 ### Architecture Overview
